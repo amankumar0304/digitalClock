@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Digital clock</h1>
+        <h2>The Time Now IS</h2>
+        <div class="clock">
+            <div id="hour">
+                <span>00</span>
+                <p>Hours</p>
+            </div>
+            <div id="minutes">
+                <span>00</span>
+                <p>Minutes</p>
+            </div>
+            <div id="seconds">
+                <span>00</span>
+                <p>Seconds</p>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+           
+           setInterval(clock,1000);
+           function clock(){
+            var time=new Date();
+            var hours=time.getHours();
+            var minutes=time.getMinutes(); 
+            var seconds=time.getSeconds();
+            var pm=false;
+            if(hours>12)
+            {
+                hours=24-hours;
+                pm=true;
+            } 
+            if(hours<10)
+            {
+                hours="0"+hours;
+            }
+            if(seconds<10)
+            {
+                seconds="0"+seconds;
+            }
+            if(minutes<10)
+            {
+                minutes="0"+minutes;
+            }
+            $('#hour').children('span').text(hours);
+            $('#minutes').children('span').text(minutes);
+            $('#seconds').children('span').text(seconds);
+            }
+        })
+    </script>
+</body>
+</html>
